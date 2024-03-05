@@ -2,10 +2,20 @@ $(document).ready(function () {
     const coffeeFilterBtns = $('.btn-filter');
     const items = $('.coffee-collection-item');
     const collectionList = $('.coffee-collection-list');
-
+    const cartBtn = $('.btn-cart');
+    const coffeeCartEl = $('.coffee-cart');
+    const itemsInCart = $('.items-in-cart');
+    const coffeeCartListEl = $('.coffee-cart-list');
     const cart = {
-        items: [],
-        totalPrice: 0
+        items: [1],
+        totalPrice: 0,
+        totalItems: 0,
+        calcTotalPrice() {
+
+        },
+        calcTotalItems() {
+
+        }
     };
 
     $(coffeeFilterBtns).click(function (e) {
@@ -21,6 +31,23 @@ $(document).ready(function () {
 
     });
 
+    $(cartBtn).click(function (e) {
+        e.preventDefault();
+        if (!$(coffeeCartEl).hasClass('hide')) {
+            $(coffeeCartEl).addClass('hide')
+        } else {
+            $(coffeeCartEl).removeClass('hide');
+
+            if (cart.items.length > 0) {
+                $('.coffee-cart h3').addClass('hide');
+                $(coffeeCartListEl).removeClass('hide');
+                $(itemsInCart).text(cart.totalItems);
+            }
+        }
+    });
+
+
+
     function filteredItems(id) {
         $(collectionList).html('')
 
@@ -33,16 +60,7 @@ $(document).ready(function () {
 
         });
 
-
     }
 
-    function render(filteredItems) {
-        let html = ''
-        $.each(filteredItems, function (indexInArray, valueOfElement) {
-            html += filteredItems[indexInArray];
-        });
 
-        $('.coffee-collection-list').append(html)
-
-    }
 });

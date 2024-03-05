@@ -60,6 +60,17 @@ ul {
     border-radius: 5px;
     width: 100%;
     max-width: 400px;
+    display: fle;
+    justify-content: center;
+    align-items: center;
+}
+
+.coffee-cart h3 {
+    font-size: 1.25rem;
+    color: rgb(149, 194, 208);
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: .5px;
 }
 
 .coffee-cart li {

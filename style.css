@@ -20,6 +20,10 @@ body {
     grid-template-rows: auto 1fr auto;
 }
 
+header {
+    position: relative;
+}
+
 main {
     padding: 0 1rem;
     margin-bottom: 6rem;
@@ -38,9 +42,68 @@ img {
     display: block;
 }
 
+ul {
+    list-style: none;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.coffee-cart {
+    position: absolute;
+    background-color: #232323;
+    padding: 3rem 1rem;
+    top: 3rem;
+    right: 0;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.coffee-cart li {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 1.15rem;
+}
+
+.coffee-cart li:not(:last-of-type) {
+    margin-bottom: 1rem;
+}
+
+.coffee-cart h4 {
+    margin-right: auto;
+    text-transform: capitalize;
+    letter-spacing: .5px;
+    color: #ddb74c;
+}
+
+.coffee-cart button {
+    background-color: #ddb74c;
+    padding: .4rem;
+    height: 1rem;
+    width: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.coffee-cart span {
+    display: inline-block;
+    margin: 0 .5rem;
+}
+
+.coffee-cart-item-total {
+    background-color: #181a18;
+    /* padding: 1rem; */
+    padding: 1.5rem 0 1.5rem 3rem;
+}
+
+.coffee-cart-total-cost {
+    font-weight: 600;
 }
 
 .hide {

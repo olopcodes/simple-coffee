@@ -4,9 +4,20 @@
     padding: 0;
 }
 
+html,
+body {
+    min-height: 100vh;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #202020;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 main {
@@ -22,6 +33,8 @@ button {
 
 img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
@@ -32,6 +45,23 @@ img {
 
 .hide {
     display: none !important;
+}
+
+.page-header-btn {
+    width: 50px;
+    font-size: 1.25rem;
+    text-decoration: none;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ddb74c;
+    background-color: white;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 3rem;
+    right: 1rem;
+    z-index: 5;
 }
 
 
@@ -124,14 +154,14 @@ img {
 
 .coffee-filter {
     text-align: center;
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     text-transform: capitalize;
     font-weight: 600;
     margin-bottom: 4rem;
 }
 
 .btn-filter {
-    padding: 1rem 1.15rem;
+    padding: .75rem 1rem;
     margin: 0 .5rem;
     border-radius: 10px;
     letter-spacing: .5px;
@@ -147,13 +177,14 @@ img {
     gap: 2rem;
 }
 
-.coffee-collection-item:hover .coffee-btn {
+.coffee-collection-item:hover .coffee-btn-add-to-cart {
     /* background-color: red; */
     /* border: 2px solid red; */
     opacity: 1;
 }
 
 .coffee-img-box {
+    height: 250px;
     position: relative;
     border-radius: 1rem;
     overflow: hidden;
@@ -175,6 +206,10 @@ img {
     background-color: rgb(189, 156, 25);
 }
 
+.coffee-tag-new {
+    background-color: rgb(149, 194, 208);
+}
+
 .coffee-description {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -188,6 +223,7 @@ img {
 
 .coffee-name {
     text-transform: capitalize;
+    font-size: 1.35rem;
 }
 
 .coffee-price {
@@ -208,16 +244,17 @@ img {
     text-transform: capitalize;
     padding: .5rem;
     font-weight: 600;
-    opacity: 0;
     border-radius: 5px;
 }
 
 .coffee-btn-sold-out {
     color: rgb(219, 73, 73);
+    pointer-events: none;
 }
 
 .coffee-btn-add-to-cart {
     color: #ddb74c;
+    opacity: 0;
 }
 
 .coffee-btn-add-to-cart:hover {
@@ -234,4 +271,15 @@ footer {
     text-align: center;
     color: #ddb74c;
 
+}
+
+@media screen and (min-width: 600px) {
+    .coffee-collection-list {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .coffee-collection {
+        width: 95%;
+        padding: 5rem 3rem;
+    }
 }

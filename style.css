@@ -9,9 +9,35 @@ body {
     background-color: #202020;
 }
 
+main {
+    padding: 0 1rem;
+    margin-bottom: 6rem;
+}
+
+button {
+    all: unset;
+    transition: .3s ease;
+    cursor: pointer;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hide {
+    display: none !important;
+}
+
+
 .top-bg {
     height: 250px;
-    background-image: url(./bg-cafe.jpg);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, .05)), url(./bg-cafe.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -21,5 +47,191 @@ body {
     width: 100%;
     /* put bg behind everything*/
     z-index: -1;
+}
+
+.btn-cart {
+    cursor: pointer;
+    color: white;
+    font-size: 1.25rem;
+    position: relative;
+}
+
+.btn-cart:hover {
+    color: #ddb74c;
+}
+
+.items-in-cart {
+    font-size: .8125rem;
+    height: 1.75rem;
+    width: 1.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #ddb74c;
+    color: #232323;
+    position: absolute;
+    top: -.85rem;
+    left: -.85rem;
+}
+
+.coffee-header {
+    padding: 2rem 1rem;
+    margin-bottom: 4rem;
+}
+
+.coffee-header header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.coffee-header a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #ddb74c;
+}
+
+.coffee-collection {
+    background-color: #181a18;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 5px;
+    color: white;
+    padding: 5rem 1rem;
+}
+
+.coffee-collection-text {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.coffee-collection-title {
+    margin-bottom: 2rem;
+    text-transform: capitalize;
+    font-size: 2.5rem;
+}
+
+.coffee-collection-description {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: #c9c9c9;
+}
+
+.coffee-filter {
+    text-align: center;
+    font-size: 1.15rem;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-bottom: 4rem;
+}
+
+.btn-filter {
+    padding: 1rem 1.15rem;
+    margin: 0 .5rem;
+    border-radius: 10px;
+    letter-spacing: .5px;
+}
+
+.btn-filter:hover,
+.btn-active {
+    background-color: #ddb74c;
+}
+
+.coffee-collection-list {
+    display: grid;
+    gap: 2rem;
+}
+
+.coffee-collection-item:hover .coffee-btn {
+    /* background-color: red; */
+    /* border: 2px solid red; */
+    opacity: 1;
+}
+
+.coffee-img-box {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+}
+
+.coffee-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: .8125rem;
+    padding: .25rem .5rem;
+    border-radius: 30px;
+}
+
+.coffee-tag-popular {
+    background-color: rgb(189, 156, 25);
+}
+
+.coffee-description {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.coffee-description>* {
+    grid-column: span 2;
+    align-self: center;
+}
+
+.coffee-name {
+    text-transform: capitalize;
+}
+
+.coffee-price {
+    justify-self: end;
+    padding: .5rem .65rem;
+    border-radius: 5px;
+    background-color: rgb(162, 210, 225);
+    color: #202020;
+}
+
+.coffee-rating-box {
+    display: flex;
+    align-items: center;
+}
+
+.coffee-btn {
+    justify-self: end;
+    text-transform: capitalize;
+    padding: .5rem;
+    font-weight: 600;
+    opacity: 0;
+    border-radius: 5px;
+}
+
+.coffee-btn-sold-out {
+    color: rgb(219, 73, 73);
+}
+
+.coffee-btn-add-to-cart {
+    color: #ddb74c;
+}
+
+.coffee-btn-add-to-cart:hover {
+    background-color: #ddb74c;
+    color: #927b3c;
+}
+
+.coffee-footer {
+    padding: 1rem;
+    background-color: #927b3c;
+}
+
+footer {
+    text-align: center;
+    color: #ddb74c;
 
 }

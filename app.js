@@ -4,7 +4,6 @@ $(document).ready(function () {
     const collectionList = $('.coffee-collection-list');
     const cartBtn = $('.btn-cart');
     const coffeeCartEl = $('.coffee-cart');
-    const itemsInCart = $('.items-in-cart');
     const coffeeCartListEl = $('.coffee-cart-list');
     const cart = {
         items: [1],
@@ -41,12 +40,30 @@ $(document).ready(function () {
             if (cart.items.length > 0) {
                 $('.coffee-cart h3').addClass('hide');
                 $(coffeeCartListEl).removeClass('hide');
-                $(itemsInCart).text(cart.totalItems);
+
+                cart.items
             }
         }
     });
 
+    $(cartBtn).on('click', '.coffee-cart-btn', function () {
+        // cartCoffeeItemHtml(cart.items);
+    });
 
+    $(collectionList).click(function (e) {
+        if ($(e.target).hasClass('coffee-btn-add-to-cart')) {
+            const item = $(e.target).parent()[0];
+
+            const name = $(item).find('h2').text().trim();
+            const price = $(item).find('.coffee-price').text().trim();
+
+            cart.items.push({
+                name: name,
+                price: price,
+                quantity: 1
+            });
+        }
+    })
 
     function filteredItems(id) {
         $(collectionList).html('')
@@ -60,6 +77,24 @@ $(document).ready(function () {
 
         });
 
+    }
+
+    function cartCoffeeItemHtml(arr) {
+        let html = ``;
+
+        $.each(arr, function (indexInArray, valueOfElement) {
+            console.log(valueOfElement)
+        });
+
+        reuturn`
+        <li class="coffee-cart-item">
+            <h4 class="coffee-cart-name">hot chocolate</h4>
+            <button id="decrease" class="coffee-cart-btn">-</button>
+            <span class="coffee-cart-amount">1</span>
+            <button id="increase" class="coffee-cart-btn">+</button>
+            <span class="coffee-cart-item-price">$5.10</span>
+        </li>
+        `;
     }
 
 

@@ -164,21 +164,6 @@ ul {
     color: #ddb74c;
 }
 
-.items-in-cart {
-    font-size: .8125rem;
-    height: 1.75rem;
-    width: 1.75rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: #ddb74c;
-    color: #232323;
-    position: absolute;
-    top: -.85rem;
-    left: -.85rem;
-}
-
 .coffee-header {
     padding: 2rem 1rem;
     margin-bottom: 4rem;

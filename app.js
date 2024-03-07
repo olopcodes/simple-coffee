@@ -6,12 +6,10 @@ $(document).ready(function () {
     const coffeeCartEl = $('.coffee-cart');
     const coffeeCartListEl = $('.coffee-cart-list');
     const cart = {
-        items: [1],
+        items: [],
         totalPrice: 0,
         totalItems: 0,
-        calcTotalPrice() {
 
-        },
         calcTotalItems() {
 
         }
@@ -35,35 +33,79 @@ $(document).ready(function () {
         if (!$(coffeeCartEl).hasClass('hide')) {
             $(coffeeCartEl).addClass('hide')
         } else {
+            let html = '';
+
             $(coffeeCartEl).removeClass('hide');
 
             if (cart.items.length > 0) {
                 $('.coffee-cart h3').addClass('hide');
                 $(coffeeCartListEl).removeClass('hide');
 
-                cart.items
+                $.each(cart.items, function (index, value) {
+                    html += cartCoffeeItemHtml(value)
+                });
             }
+            $(coffeeCartListEl).html('');
+
+            calcTotalPrice(cart);
+
+            html += cartTotalHTML(cart.totalPrice);
+
+            $(coffeeCartListEl).append(html);
         }
     });
 
-    $(cartBtn).on('click', '.coffee-cart-btn', function () {
-        // cartCoffeeItemHtml(cart.items);
+    $(coffeeCartListEl).on('click', '.coffee-cart-btn', function (e) {
+
+        const btnClickedId = $(e.target).attr('id');
+        const itemId = $(e.target).parent().attr('id');
+        const currentItem = getCartItem(cart.items, itemId);
+
+        if (btnClickedId === 'decrease' && currentItem.quantity !== 0) {
+
+        }
+
+
     });
 
     $(collectionList).click(function (e) {
         if ($(e.target).hasClass('coffee-btn-add-to-cart')) {
+            const id = $(e.target).parent().parent().attr('id')
             const item = $(e.target).parent()[0];
-
             const name = $(item).find('h2').text().trim();
             const price = $(item).find('.coffee-price').text().trim();
 
             cart.items.push({
+                id: id,
                 name: name,
                 price: price,
                 quantity: 1
             });
         }
     })
+
+    function getCartItem(arr, id) {
+        let item
+        $.each(arr, function (index, value) {
+            if (value.id === id) {
+                item = value;
+            }
+        });
+
+        return item;
+    }
+
+    function calcTotalPrice(obj) {
+        let total = 0;
+
+        $.each(obj.items, function (index, value) {
+            const price = Number(value.price.slice(1));
+
+            total += price;
+        });
+
+        cart.totalPrice = total.toFixed(2);
+    }
 
     function filteredItems(id) {
         $(collectionList).html('')
@@ -79,22 +121,30 @@ $(document).ready(function () {
 
     }
 
-    function cartCoffeeItemHtml(arr) {
-        let html = ``;
+    function cartCoffeeItemHtml(obj) {
 
-        $.each(arr, function (indexInArray, valueOfElement) {
-            console.log(valueOfElement)
-        });
-
-        reuturn`
-        <li class="coffee-cart-item">
-            <h4 class="coffee-cart-name">hot chocolate</h4>
+        return `
+        <li id="${obj.id}" class="coffee-cart-item">
+            <h4 class="coffee-cart-name">${obj.name}</h4>
             <button id="decrease" class="coffee-cart-btn">-</button>
-            <span class="coffee-cart-amount">1</span>
+            <span class="coffee-cart-amount">${obj.quantity}</span>
             <button id="increase" class="coffee-cart-btn">+</button>
-            <span class="coffee-cart-item-price">$5.10</span>
+            <span class="coffee-cart-item-price">${obj.price}</span>
         </li>
         `;
+    }
+
+    function cartTotalHTML(price) {
+        return `
+        <li class="coffee-cart-item-total">
+            <h4>total:</h4>
+            <span class="coffee-cart-total-cost">$${price}</span>
+        </li>
+        `
+    }
+
+    function updatePrice(obj) {
+
     }
 
 

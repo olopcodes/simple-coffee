@@ -91,17 +91,6 @@ ul {
     color: #ddb74c;
 }
 
-.coffee-cart button {
-    background-color: #ddb74c;
-    padding: .4rem;
-    height: 1rem;
-    width: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
-}
-
 .coffee-cart span {
     display: inline-block;
     margin: 0 .5rem;
